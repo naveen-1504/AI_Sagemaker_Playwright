@@ -71,3 +71,39 @@ The framework tests a complete e-commerce checkout flow:
 ```bash
 DISPLAY=:99 npx playwright test --headed
 ```
+
+## 🔄 Git Workflow - Safe Code Integration
+
+### Quick Start
+```bash
+# First time setup
+./setup-git.sh
+
+# Create feature branch
+./git-workflow.sh your-feature-name
+
+# Make changes, then commit and push
+git add .
+git commit -m "type: description"
+git push origin feature/your-feature-name
+
+# Or use the complete workflow script
+./complete-workflow.sh
+```
+
+### Workflow Steps
+1. **Create Feature Branch** - `./git-workflow.sh feature-name`
+2. **Develop & Commit** - Make changes and commit
+3. **Push to GitHub** - `git push origin feature/feature-name`
+4. **Open Pull Request** - Create PR on GitHub
+5. **Review & Discuss** - Get code reviewed
+6. **Merge to Main** - Merge after approval
+7. **Auto-Deploy** - Pipeline deploys automatically
+
+### Documentation
+- 📖 [Quick Start Guide](./QUICKSTART_GIT.md) - Fast reference
+- 📚 [Complete Workflow Guide](./GIT_WORKFLOW.md) - Detailed documentation
+- ✅ [Setup Summary](./GIT_WORKFLOW_SETUP.md) - What's been configured
+
+### Repository
+🔗 https://github.com/naveen-1504/AI_Sagemaker_Playwright
