@@ -8,7 +8,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
+  playwright-tests:
+    name: Playwright Tests
     runs-on: ubuntu-latest
     
     steps:
@@ -43,7 +44,68 @@ jobs:
       if: always()
       uses: actions/upload-artifact@v4
       with:
-        name: test-results
+        name: playwright-test-results
         path: test-results/
+        retention-days: 30
+        if-no-files-found: ignore
+
+  cucumber-ui-tests:
+    name: Cucumber UI Tests
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps chromium
+    
+    - name: Run Cucumber UI tests
+      run: npm run cucumber:ui
+      continue-on-error: true
+    
+    - name: Upload Cucumber UI report
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: cucumber-ui-report
+        path: cucumber-report.html
+        retention-days: 30
+        if-no-files-found: ignore
+
+  cucumber-api-tests:
+    name: Cucumber API Tests
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Run Cucumber API tests
+      run: npm run cucumber:api
+      continue-on-error: true
+    
+    - name: Upload Cucumber API report
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: cucumber-api-report
+        path: cucumber-report.html
         retention-days: 30
         if-no-files-found: ignore
