@@ -1,0 +1,38 @@
+
+Running 1 test using 1 worker
+
+[1/1] [chromium] › tests/complete-checkout.spec.ts:5:5 › Complete checkout flow - Register, Login, Add Product, Checkout
+[chromium] › tests/complete-checkout.spec.ts:5:5 › Complete checkout flow - Register, Login, Add Product, Checkout
+✓ Navigated to registration page
+
+✓ Registered user: test1787118044460@test.com
+
+  1) [chromium] › tests/complete-checkout.spec.ts:5:5 › Complete checkout flow - Register, Login, Add Product, Checkout 
+
+    TimeoutError: page.waitForSelector: Timeout 30000ms exceeded.
+    Call log:
+      - waiting for locator('[data-test="email"]') to be visible
+
+
+      37 |   
+      38 |   // 2. Sign in - wait for login page
+    > 39 |   await page.waitForSelector('[data-test="email"]', { timeout: 30000 });
+         |              ^
+      40 |   await page.fill('[data-test="email"]', email);
+      41 |   await page.fill('[data-test="password"]', password);
+      42 |   await page.click('[data-test="login-submit"]');
+        at /home/sagemaker-user/playwright-testing/tests/complete-checkout.spec.ts:39:14
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/complete-checkout-Complete-79be2--Login-Add-Product-Checkout-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/complete-checkout-Complete-79be2--Login-Add-Product-Checkout-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/complete-checkout-Complete-79be2--Login-Add-Product-Checkout-chromium/error-context.md
+
+
+  1 failed
+    [chromium] › tests/complete-checkout.spec.ts:5:5 › Complete checkout flow - Register, Login, Add Product, Checkout 

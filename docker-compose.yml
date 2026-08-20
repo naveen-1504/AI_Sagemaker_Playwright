@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  api-tests:
+    build: .
+    command: npm run cucumber:api
+    volumes:
+      - ./cucumber-report.html:/app/cucumber-report.html
+      - ./playwright-report:/app/playwright-report
+    environment:
+      - CI=true
+
+  ui-tests:
+    build: .
+    command: npm run cucumber:ui
+    volumes:
+      - ./cucumber-report.html:/app/cucumber-report.html
+      - ./playwright-report:/app/playwright-report
+      - ./test-results:/app/test-results
+    environment:
+      - CI=true
+
+  playwright-tests:
+    build: .
+    command: npm test
+    volumes:
+      - ./playwright-report:/app/playwright-report
+      - ./test-results:/app/test-results
+    environment:
+      - CI=true

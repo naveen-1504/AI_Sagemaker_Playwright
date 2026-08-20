@@ -1,0 +1,196 @@
+[
+  {
+    "description": "  As a customer\n  I want to purchase products\n  So that I can complete my order",
+    "elements": [
+      {
+        "description": "",
+        "id": "e-commerce-checkout-flow;complete-purchase-flow---register,-login,-add-product,-checkout",
+        "keyword": "Scenario",
+        "line": 6,
+        "name": "Complete purchase flow - Register, Login, Add Product, Checkout",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 81427452
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I navigate to registration page",
+            "match": {
+              "location": "features/step_definitions/checkout.steps.ts:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 18800242697
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 8,
+            "name": "I register a new account",
+            "match": {
+              "location": "features/step_definitions/checkout.steps.ts:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 10329640854
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "I sign in with registered credentials",
+            "match": {
+              "location": "features/step_definitions/checkout.steps.ts:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 13677961150
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "I navigate to home page",
+            "match": {
+              "location": "features/step_definitions/checkout.steps.ts:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3338602453
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 11,
+            "name": "I select a product and add to cart",
+            "match": {
+              "location": "features/step_definitions/checkout.steps.ts:31"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4165849485
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "I open cart and proceed to checkout",
+            "match": {
+              "location": "features/step_definitions/checkout.steps.ts:35"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5914574497
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "I should see logged in message",
+            "match": {
+              "location": "features/step_definitions/checkout.steps.ts:40"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 23196330
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 14,
+            "name": "I proceed to billing address",
+            "match": {
+              "location": "features/step_definitions/checkout.steps.ts:46"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2054352976
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 15,
+            "name": "I enter billing address details",
+            "match": {
+              "location": "features/step_definitions/checkout.steps.ts:50"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2214160069
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 16,
+            "name": "I select bank transfer payment",
+            "match": {
+              "location": "features/step_definitions/checkout.steps.ts:54"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2052498363
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 17,
+            "name": "I enter bank details and confirm",
+            "match": {
+              "location": "features/step_definitions/checkout.steps.ts:58"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3121899656
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 18,
+            "name": "I should see invoice generated",
+            "match": {
+              "location": "features/step_definitions/checkout.steps.ts:62"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2009968809
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 37012600
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "e-commerce-checkout-flow",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "E-commerce Checkout Flow",
+    "tags": [],
+    "uri": "features/checkout.feature"
+  }
+]

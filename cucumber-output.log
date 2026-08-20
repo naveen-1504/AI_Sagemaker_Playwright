@@ -1,0 +1,28 @@
+
+> playwright-testing@1.0.0 cucumber
+> cucumber-js
+
+..F-----.
+
+Failures:
+
+1) Scenario: Complete purchase flow from product selection to order confirmation # features/checkout.feature:6
+   ✔ Before # support/hooks.ts:14
+   ✔ Given I am on the home page # features/step_definitions/checkout.steps.ts:14
+   ✖ When I add a product to cart # features/step_definitions/checkout.steps.ts:19
+       page.waitForSelector: Timeout 20000ms exceeded.
+       Call log:
+         - waiting for locator('.card') to be visible
+
+           at HomePage.addFirstProductToCart (/home/sagemaker-user/playwright-testing/pages/HomePage.ts:13:21)
+           at World.<anonymous> (/home/sagemaker-user/playwright-testing/features/step_definitions/checkout.steps.ts:20:18)
+   - And I proceed to cart # features/step_definitions/checkout.steps.ts:23
+   - And I proceed to checkout # features/step_definitions/checkout.steps.ts:28
+   - And I register a new account # features/step_definitions/checkout.steps.ts:32
+   - And I complete the checkout process # features/step_definitions/checkout.steps.ts:39
+   - Then I should see order confirmation # features/step_definitions/checkout.steps.ts:44
+   ✔ After # support/hooks.ts:20
+
+1 scenario (1 failed)
+7 steps (1 failed, 5 skipped, 1 passed)
+0m25.630s (executing steps: 0m25.392s)

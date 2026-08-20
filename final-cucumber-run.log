@@ -1,0 +1,28 @@
+
+> playwright-testing@1.0.0 cucumber
+> cucumber-js
+
+..F-----.
+
+Failures:
+
+1) Scenario: Complete purchase flow from product selection to order confirmation # features/checkout.feature:6
+   ✔ Before # support/hooks.ts:14
+   ✔ Given I am on the home page # features/step_definitions/checkout.steps.ts:14
+   ✖ When I add a product to cart # features/step_definitions/checkout.steps.ts:19
+       locator.click: Timeout 60000ms exceeded.
+       Call log:
+         - waiting for locator('text=Slip Joint Pliers').first()
+
+           at HomePage.addFirstProductToCart (/home/sagemaker-user/playwright-testing/pages/HomePage.ts:20:65)
+           at async World.<anonymous> (/home/sagemaker-user/playwright-testing/features/step_definitions/checkout.steps.ts:20:3)
+   - And I proceed to cart # features/step_definitions/checkout.steps.ts:23
+   - And I proceed to checkout # features/step_definitions/checkout.steps.ts:28
+   - And I register a new account # features/step_definitions/checkout.steps.ts:32
+   - And I complete the checkout process # features/step_definitions/checkout.steps.ts:39
+   - Then I should see order confirmation # features/step_definitions/checkout.steps.ts:44
+   ✔ After # support/hooks.ts:21
+
+1 scenario (1 failed)
+7 steps (1 failed, 5 skipped, 1 passed)
+1m40.773s (executing steps: 1m40.531s)

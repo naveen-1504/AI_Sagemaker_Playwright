@@ -1,0 +1,90 @@
+stages:
+  - install
+  - test
+  - report
+
+variables:
+  npm_config_cache: "$CI_PROJECT_DIR/.npm"
+  PLAYWRIGHT_BROWSERS_PATH: "$CI_PROJECT_DIR/ms-playwright"
+
+cache:
+  paths:
+    - .npm
+    - node_modules
+    - ms-playwright
+
+install:
+  stage: install
+  image: node:18
+  script:
+    - npm ci
+    - npx playwright install --with-deps chromium
+  artifacts:
+    paths:
+      - node_modules
+      - ms-playwright
+    expire_in: 1 day
+
+api-tests:
+  stage: test
+  image: node:18
+  dependencies:
+    - install
+  script:
+    - npm run cucumber:api
+    - npx playwright test api-user
+  artifacts:
+    when: always
+    paths:
+      - cucumber-report.html
+      - playwright-report/
+    reports:
+      junit: playwright-report/results.xml
+    expire_in: 30 days
+
+ui-tests:
+  stage: test
+  image: mcr.microsoft.com/playwright:v1.40.0-jammy
+  dependencies:
+    - install
+  script:
+    - npm run cucumber:ui
+    - npx playwright test complete-checkout
+  artifacts:
+    when: always
+    paths:
+      - cucumber-report.html
+      - playwright-report/
+      - test-results/
+    reports:
+      junit: playwright-report/results.xml
+    expire_in: 30 days
+
+page-object-tests:
+  stage: test
+  image: mcr.microsoft.com/playwright:v1.40.0-jammy
+  dependencies:
+    - install
+  script:
+    - npx playwright test RegisterPage HomePage CartPage CheckoutPage
+  artifacts:
+    when: always
+    paths:
+      - playwright-report/
+    expire_in: 30 days
+
+pages:
+  stage: report
+  dependencies:
+    - api-tests
+    - ui-tests
+    - page-object-tests
+  script:
+    - mkdir -p public
+    - cp -r cucumber-report.html public/ || true
+    - cp -r playwright-report public/ || true
+  artifacts:
+    paths:
+      - public
+  only:
+    - main

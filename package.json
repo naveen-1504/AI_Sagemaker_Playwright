@@ -1,0 +1,28 @@
+{
+  "name": "playwright-testing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "xvfb-run npx playwright test --headed",
+    "test:ui": "xvfb-run npx playwright test --ui",
+    "report": "npx playwright show-report",
+    "cucumber": "cucumber-js",
+    "cucumber:ui": "cucumber-js --profile ui",
+    "cucumber:api": "cucumber-js --profile api",
+    "cucumber:report": "open cucumber-report.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@cucumber/cucumber": "^12.9.0",
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^26.2.0",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.23.12",
+    "typescript": "^7.0.2"
+  }
+}

@@ -1,0 +1,50 @@
+
+Running 1 test using 1 worker
+
+[1/1] [chromium] › tests/complete-checkout.spec.ts:5:5 › Complete checkout flow with Slip Joint Pliers
+[chromium] › tests/complete-checkout.spec.ts:5:5 › Complete checkout flow with Slip Joint Pliers
+✓ Navigated to home page
+
+✓ Clicked Slip Joint Pliers product
+
+✓ Clicked Add to Cart
+
+✓ Product added (success message not visible but continuing)
+
+✓ Navigated to cart
+
+✓ Clicked Proceed to Checkout - navigated to login
+
+✓ Clicked Register link
+
+  1) [chromium] › tests/complete-checkout.spec.ts:5:5 › Complete checkout flow with Slip Joint Pliers 
+
+    Test timeout of 120000ms exceeded.
+
+    Error: page.fill: Test timeout of 120000ms exceeded.
+    Call log:
+      - waiting for locator('#address')
+
+
+      59 |   await page.waitForTimeout(1000);
+      60 |   
+    > 61 |   await page.fill('#address', '123 Test Street');
+         |              ^
+      62 |   await page.fill('#postcode', '12345');
+      63 |   await page.fill('#city', 'Test City');
+      64 |   await page.fill('#state', 'Test State');
+        at /home/sagemaker-user/playwright-testing/tests/complete-checkout.spec.ts:61:14
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/complete-checkout-Complete-2474e-flow-with-Slip-Joint-Pliers-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/complete-checkout-Complete-2474e-flow-with-Slip-Joint-Pliers-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/complete-checkout-Complete-2474e-flow-with-Slip-Joint-Pliers-chromium/error-context.md
+
+
+  1 failed
+    [chromium] › tests/complete-checkout.spec.ts:5:5 › Complete checkout flow with Slip Joint Pliers 
