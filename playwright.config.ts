@@ -29,6 +29,8 @@ export default defineConfig({
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
+    headless: false,  // Run in headed mode for VNC viewing
+    slowMo: 500,      // Slow down actions to watch them
   },
 
   /* Configure projects for major browsers */

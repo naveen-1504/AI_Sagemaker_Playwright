@@ -8,12 +8,15 @@ let page: Page;
 setDefaultTimeout(180000);
 
 BeforeAll(async function () {
-  browser = await chromium.launch({ headless: true });
+  browser = await chromium.launch({ 
+    headless: true
+  });
 });
 
 Before(async function () {
   context = await browser.newContext({
     ...devices['Desktop Chrome'],
+    viewport: { width: 1920, height: 1080 }
   });
   page = await context.newPage();
   page.setDefaultTimeout(90000);

@@ -4,6 +4,23 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
+│                  GIT WORKFLOW & CI/CD LAYER                     │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐    │
+│  │ Feature      │───▶│ Pull Request │───▶│ Main Branch  │    │
+│  │ Branch       │    │ & Review     │    │ (Deploy)     │    │
+│  └──────────────┘    └──────────────┘    └──────────────┘    │
+│         │                    │                    │             │
+│         └────────────────────┴────────────────────┘             │
+│                              ↓                                  │
+│                    GitHub Actions CI/CD                         │
+│                    • Run Tests on PR                            │
+│                    • Auto-deploy on Merge                       │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+                            ↓
+┌─────────────────────────────────────────────────────────────────┐
 │                    TEST EXECUTION LAYER                         │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
@@ -318,6 +335,165 @@ npm run test:headed
 DISPLAY=:99 npx playwright test --headed
 ```
 
+## 🔄 Git Workflow & CI/CD Integration
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    DEVELOPMENT WORKFLOW                         │
+└─────────────────────────────────────────────────────────────────┘
+
+1. CREATE FEATURE BRANCH
+   ↓
+   ./git-workflow.sh feature-name
+   ↓
+   feature/feature-name created from main
+
+2. DEVELOP & COMMIT
+   ↓
+   • Make code changes
+   • Write/update tests
+   • Run tests locally
+   ↓
+   git add . && git commit -m "type: description"
+
+3. PUSH TO GITHUB
+   ↓
+   git push origin feature/feature-name
+   ↓
+   Branch pushed to remote
+
+4. OPEN PULL REQUEST
+   ↓
+   • Create PR on GitHub
+   • Fill PR template
+   • CI/CD triggers automatically
+   ↓
+   ┌─────────────────────────────────┐
+   │  GitHub Actions Pipeline        │
+   ├─────────────────────────────────┤
+   │  ✓ Install dependencies         │
+   │  ✓ Run Playwright tests         │
+   │  ✓ Run Cucumber UI tests        │
+   │  ✓ Run Cucumber API tests       │
+   │  ✓ Generate reports             │
+   │  ✓ Upload artifacts             │
+   └─────────────────────────────────┘
+
+5. REVIEW & DISCUSS
+   ↓
+   • Code review
+   • Address feedback
+   • Update PR (auto re-runs tests)
+
+6. MERGE TO MAIN
+   ↓
+   • Squash and merge (recommended)
+   • Delete feature branch
+   ↓
+   ┌─────────────────────────────────┐
+   │  Auto-Deploy Pipeline           │
+   ├─────────────────────────────────┤
+   │  ✓ Run full test suite          │
+   │  ✓ Build artifacts              │
+   │  ✓ Deploy to environment        │
+   │  ✓ Verify deployment            │
+   └─────────────────────────────────┘
+
+7. DEPLOYMENT COMPLETE
+   ↓
+   • Tests pass ✓
+   • Code deployed ✓
+   • Ready for next feature ✓
+```
+
+## 🛠️ Git Workflow Scripts
+
+```
+┌─────────────────────────────────────────┐
+│  Automation Scripts                     │
+├─────────────────────────────────────────┤
+│  • git-workflow.sh                      │
+│    └─ Create feature branches           │
+│                                         │
+│  • setup-git.sh                         │
+│    └─ Configure Git user                │
+│                                         │
+│  • complete-workflow.sh                 │
+│    └─ Commit & push automation          │
+└─────────────────────────────────────────┘
+
+┌─────────────────────────────────────────┐
+│  Documentation                          │
+├─────────────────────────────────────────┤
+│  • GIT_WORKFLOW.md                      │
+│    └─ Complete workflow guide           │
+│                                         │
+│  • QUICKSTART_GIT.md                    │
+│    └─ Quick reference                   │
+│                                         │
+│  • .github/pull_request_template.md     │
+│    └─ PR template for consistency       │
+└─────────────────────────────────────────┘
+```
+
+## 🚀 Complete Integration Flow
+
+```
+┌──────────────┐
+│  Developer   │
+└──────┬───────┘
+       │
+       ├─ ./git-workflow.sh new-feature
+       │
+       ↓
+┌──────────────────┐
+│ Feature Branch   │
+│ (Local)          │
+└──────┬───────────┘
+       │
+       ├─ Write code & tests
+       ├─ npm test (local validation)
+       ├─ git commit
+       │
+       ↓
+┌──────────────────┐
+│ Push to GitHub   │
+└──────┬───────────┘
+       │
+       ↓
+┌──────────────────┐
+│ Pull Request     │
+└──────┬───────────┘
+       │
+       ├─ CI/CD Pipeline Runs
+       │  ├─ Playwright Tests
+       │  ├─ Cucumber UI Tests
+       │  └─ Cucumber API Tests
+       │
+       ↓
+┌──────────────────┐
+│ Code Review      │
+└──────┬───────────┘
+       │
+       ├─ Approve
+       │
+       ↓
+┌──────────────────┐
+│ Merge to Main    │
+└──────┬───────────┘
+       │
+       ├─ Auto-Deploy Pipeline
+       │  ├─ Full Test Suite
+       │  ├─ Build
+       │  └─ Deploy
+       │
+       ↓
+┌──────────────────┐
+│ Production       │
+│ (Deployed)       │
+└──────────────────┘
+```
+
 ## 🎓 Architecture Highlights for Demo
 
 1. **Clean Separation**: UI and API tests completely isolated
@@ -326,3 +502,6 @@ DISPLAY=:99 npx playwright test --headed
 4. **Maintainability**: Single source of truth for page interactions
 5. **Flexibility**: Run tests individually or as suites
 6. **Reporting**: Multiple report formats for different audiences
+7. **Safe Integration**: Feature branch workflow with PR reviews
+8. **Automated CI/CD**: Tests run automatically on every PR
+9. **Auto-Deployment**: Merge to main triggers deployment pipeline
